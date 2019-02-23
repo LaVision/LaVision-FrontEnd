@@ -18,9 +18,22 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
   </head>
   <body>
-    <div class="ui secondary pointing menu">
+    <div class="ui top attached secondary pointing menu">
       <a class="header item" href="/"> LaVision </a>
-      <a class="item" href="./view.html"> Locations </a>
+      <div class="ui pointing dropdown link item">
+        <span class="text">Locations</span> <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item">
+            <a href="#" style="color: black;">Study Spaces</a>
+          </div>
+          <div class="item">
+            <a href="#" style="color: black;">Ice Rinks</a>
+          </div>
+          <div class="item">
+            <a href="#" style="color: black;">Public Parks</a>
+          </div>
+        </div>
+      </div>
       <a class="item" href="./about.html"> About Us </a>
     </div>
     <div class="ui main text container"></div>
@@ -34,7 +47,14 @@
                   <img src="./assets/pictures/LaVision.png" alt="" />
                 </div>
                 <div class="middle aligned content">
-                  <div class="ui header">LaVision: Keeping Track.</div>
+                  <h1 class="ui header" style="margin-top:30px;">
+                    <div class="content">
+                      <span style="font-size:70px; ">LaVision</span>
+                      <div class="sub header" style="padding-top: 10px;">
+                        Keeping Track
+                      </div>
+                    </div>
+                  </h1>
                 </div>
               </div>
               <div class="ui divider"></div>
@@ -43,9 +63,28 @@
                 given area.
               </div>
               <br />
-              <a class="ui right blue button"
-                >View available locations &raquo;</a
-              >
+              <button class="ui right blue button" type="submit" id="test">
+                View available locations &raquo;
+              </button>
+              <div class="ui basic modal test">
+                <i class="close icon"></i>
+                <div class="header">Where do you want to go today?</div>
+                <div class="content">
+                  <div class="ui two column stackable grid">
+                    <div class="three column row">
+                      <div class="column">
+                        <a class="fluid ui gray button">Study Spaces</a>
+                      </div>
+                      <div class="column">
+                        <a class="fluid ui teal button">Ice Rinks</a>
+                      </div>
+                      <div class="column">
+                        <a class="fluid ui blue button">Public Parks</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -99,5 +138,18 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("#test").click(function() {
+          $(".test").modal("show");
+        });
+        $(".test").modal({
+          closable: true
+        });
+      });
+      $(function() {
+        $(".ui.dropdown").dropdown();
+      });
+    </script>
   </body>
 </html>
