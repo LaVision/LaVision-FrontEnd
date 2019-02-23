@@ -9,7 +9,13 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="./main.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
   </head>
   <body>
     <div class="ui secondary pointing menu">
@@ -27,18 +33,19 @@
                 <div class="image">
                   <img src="./assets/pictures/LaVision.png" alt="" />
                 </div>
+                <div class="middle aligned content">
+                  <div class="ui header">LaVision: Keeping Track.</div>
+                </div>
               </div>
-
-              <div class="ui header">LaVision: Keeping Track.</div>
               <div class="ui divider"></div>
               <div class="description">
-                This is a template for a simple marketing or informational
-                website. It includes a large callout called a jumbotron and
-                three supporting pieces of content. Use it as a starting point
-                to create something more unique.
+                A clean, efficient way to estimate the population of humans in a
+                given area.
               </div>
               <br />
-              <a class="ui right blue button">Learn more &raquo;</a>
+              <a class="ui right blue button"
+                >View available locations &raquo;</a
+              >
             </div>
           </div>
         </div>
@@ -47,35 +54,36 @@
     <div class="ui hidden divider"></div>
     <div class="ui page grid">
       <div class="three column row">
-        <div class="column">
+        <div class="column ic">
+          <i class="fas fa-3x fa-brain"></i>
           <h2 class="ui header">Machine Learning</h2>
-          <p>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
-            tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-            fermentum massa justo sit amet risus. Etiam porta sem malesuada
-            magna mollis euismod. Donec sed odio dui.
+
+          <p style="text-align: left">
+            LaVision uses a state-of-the-art neural network human detection
+            model which utilizes
+            <a href="https://www.tensorflow.org/">Tensorflow</a> and
+            <a href="https://opencv.org/">OpenCV</a> and determines with near
+            perfect accuracy the number of people at a given facility, from
+            snapshots captured by a webcam.
           </p>
-          <button class="ui tiny button m-top-10">View details &raquo;</button>
         </div>
-        <div class="column">
+        <div class="column ic">
+          <i class="fas fa-3x fa-microchip"></i>
           <h2 class="ui header">DragonBoard</h2>
-          <p>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
-            tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-            fermentum massa justo sit amet risus. Etiam porta sem malesuada
-            magna mollis euismod. Donec sed odio dui.
+          <p style="text-align: left">
+            DragonBoard 410c is a development board build by Qualcomm, which
+            captures live webcam footage for LaVision to process.
           </p>
-          <button class="ui tiny button m-top-10">View details &raquo;</button>
         </div>
-        <div class="column">
-          <h2 class="ui header">Heading</h2>
-          <p>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
-            tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-            fermentum massa justo sit amet risus. Etiam porta sem malesuada
-            magna mollis euismod. Donec sed odio dui.
+        <div class="column ic">
+          <i class="fas fa-3x fa-chart-area"></i>
+          <h2 class="ui header">Statistics</h2>
+          <p style="text-align: left">
+            Data is collected to provide accurate statistics for users to
+            determine the facility they wish to attend, while respecting the
+            privacy of citizens by blurring the faces of individuals in the
+            image.
           </p>
-          <button class="ui tiny button m-top-10">View details &raquo;</button>
         </div>
       </div>
       <div class="row">

@@ -32,3 +32,7 @@ body {
 .ui .button {
   text-transform: capitalize;
 }
+
+.ic {
+  text-align: center;
+}
