@@ -1,0 +1,25 @@
+[debug] [2019-02-23T19:59:16.233Z] ----------------------------------------------------------------------
+[debug] [2019-02-23T19:59:16.235Z] Command:       /usr/local/Cellar/node/11.9.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-02-23T19:59:16.235Z] CLI Version:   6.4.0
+[debug] [2019-02-23T19:59:16.235Z] Platform:      darwin
+[debug] [2019-02-23T19:59:16.235Z] Node Version:  v11.9.0
+[debug] [2019-02-23T19:59:16.236Z] Time:          Sat Feb 23 2019 14:59:16 GMT-0500 (Eastern Standard Time)
+[debug] [2019-02-23T19:59:16.236Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-02-23T19:59:16.242Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-02-23T19:59:16.243Z] > authorizing via signed-in user
+[debug] [2019-02-23T19:59:16.243Z] [iam] checking project lavision for permissions ["firebase.projects.get"]
+[debug] [2019-02-23T19:59:16.244Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lavision:testIamPermissions  
+
+[debug] [2019-02-23T19:59:16.561Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-23T19:59:16.563Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/lavision  
+ 
+[debug] [2019-02-23T19:59:16.853Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/zackyew/GitHub/LaVision-frontend'...
+[info] 
+[debug] [2019-02-23T19:59:16.856Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/271188764440/clients/_:getWebAppConfig  
+ 
+[debug] [2019-02-23T19:59:17.104Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
