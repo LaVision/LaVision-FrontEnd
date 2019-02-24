@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>LaVision</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <link rel="icon" href="../assets/pictures/LaVision.png" />
+  </head>
+  <body>
+    <div class="ui secondary pointing menu">
+      <a class="header item" href="/"> LaVision </a>
+      <div class="ui pointing dropdown link item">
+        <span class="text">Study Spaces</span> <i class="dropdown icon"></i>
+        <div class="menu">
+          <a href="./rink.html" class="item" style="color: black;">Ice Rinks</a>
+
+          <a href="./park.html" class="item" style="color: black;"
+            >Public Parks</a
+          >
+        </div>
+      </div>
+      <a class="item" href="../about.html"> About Us </a>
+    </div>
+    <div class="ui container">
+      <h1 class="ui huge header">Study Spaces</h1>
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Condition</th>
+            <th>Population</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Name">Victor Hall</td>
+            <td data-label="Condition">Sparse</td>
+            <td data-label="Population">7</td>
+          </tr>
+          <tr>
+            <td data-label="Name">Max E. Lecture Hall</td>
+            <td data-label="Condition">Half Full</td>
+            <td data-label="Population">40</td>
+          </tr>
+          <tr>
+            <td data-label="Name">MC4044</td>
+            <td data-label="Condition">Full</td>
+            <td data-label="Population">100</td>
+          </tr>
+          <tr>
+            <td data-label="Name">HW214</td>
+            <td data-label="Condition">Full</td>
+            <td data-label="Population">86</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="ui divider"></div>
+      <span>&copy; LaVision 2019</span>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $(".ui.dropdown").dropdown();
+      });
+    </script>
+  </body>
+</html>
