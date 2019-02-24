@@ -94,12 +94,12 @@
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <script type="text/javascript">
       var storage = firebase.storage();
-      var storageRef = storage.ref("current.jpg");
+      var storageRef = storage.ref("current.png");
       // Image download
       storageRef
         .getDownloadURL()
         .then(function(url) {
-          // `url` is the download URL for 'images/stars.jpg'
+          // `url` is the download URL for 'current.jpg'
 
           // This can be downloaded directly:
           var xhr = new XMLHttpRequest();
