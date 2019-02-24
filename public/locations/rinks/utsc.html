@@ -125,7 +125,7 @@
           .ref("rinks")
           .on("value", function(snapshot) {
             var rinks = snapshotToArray(snapshot);
-            $("#number").text("" + rinks[0].numPeople);
+            $("#number").text("" + rinks[4].numPeople);
           });
       }
       $(function() {
