@@ -15,7 +15,6 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
   </head>
   <body>
     <div class="ui secondary pointing menu">
@@ -58,6 +57,7 @@
                     150 Borough Dr, Scarborough, ON M1P 0B1, Canada
                   </div>
                 </h1>
+                <h3>Estimated No. of People: <span id="number"></span></h3>
                 <p style="padding: 20px 0">
                   Albert Campbell Square is located in the courtyard between the
                   Scarborough Civic Centre and Scarborough Town Centre. The
@@ -89,6 +89,19 @@
         </div>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDhHOVv0cuU7TvydMsoRvvOtv9tDTaS1zk",
+        authDomain: "lavision.firebaseapp.com",
+        databaseURL: "https://lavision.firebaseio.com",
+        projectId: "lavision",
+        storageBucket: "lavision.appspot.com",
+        messagingSenderId: "271188764440"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -96,6 +109,15 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <script type="text/javascript">
+      function getRinks() {
+        firebase
+          .database()
+          .ref("rinks")
+          .on("value", function(snapshot) {
+            var rinks = snapshotToArray(snapshot);
+            $("#number").text("" + rinks[0].numPeople);
+          });
+      }
       $(function() {
         $(".ui.dropdown").dropdown();
       });
@@ -112,6 +134,19 @@
           $("#" + $(this).attr("rel")).show();
         });
       });
+      function snapshotToArray(snapshot) {
+        var returnArr = [];
+
+        snapshot.forEach(function(childSnapshot) {
+          var item = childSnapshot.val();
+          item.key = childSnapshot.key;
+
+          returnArr.push(item);
+        });
+
+        return returnArr;
+      }
+      getRinks();
     </script>
   </body>
 </html>
