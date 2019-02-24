@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../../assets/pictures/LaVision.png" />
+    <title>LaVision</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <div class="ui secondary pointing menu">
+      <a class="header item" href="/"> LaVision </a>
+      <div class="ui pointing dropdown link item">
+        <span class="text">Locations</span> <i class="dropdown icon"></i>
+        <div class="menu">
+          <a href="../study.html" class="item" style="color: black;">
+            Study Spaces
+          </a>
+          <a href="../rink.html" class="item" style="color: black;">
+            Ice Rinks
+          </a>
+          <a href="../park.html" class="item" style="color: black;">
+            Public Parks
+          </a>
+        </div>
+      </div>
+      <a class="item" href="../about.html"> About Us </a>
+    </div>
+    <div class="ui container">
+      <div class="ui grid">
+        <div class="eight wide column">
+          <img
+            class="ui fluid big image"
+            src="../../assets/pictures/Locations/albert.png"
+          />
+        </div>
+        <div class="eight wide column">
+          <div class="column">
+            <div class="ui segment">
+              <div class="ui menu top">
+                <a class="item pg" data-tab="details" rel="tab1">Details</a>
+                <a class="item pg" data-tab="map" rel="tab2">Map</a>
+              </div>
+              <div class="ui tab cont" id="tab1" data-tab="details">
+                <h1 class="ui huge header" style="margin-top: 20px">
+                  Albert Campbell Square
+                  <div class="sub header">
+                    150 Borough Dr, Scarborough, ON M1P 0B1, Canada
+                  </div>
+                </h1>
+                <p style="padding: 20px 0">
+                  Albert Campbell Square is located in the courtyard between the
+                  Scarborough Civic Centre and Scarborough Town Centre. The
+                  Square is named after the first Mayor of Scarborough, Albert
+                  Campbell. It is a lovely spot to sit and have lunch in the
+                  summer or go skating on the outdoor rink in the winter.
+                  Landscaped gardens and greenery surround the square making it
+                  a restful spot to visit during your daily errands.
+                </p>
+                <a
+                  href="https://www.toronto.ca/data/parks/prd/facilities/complex/2155/index.html"
+                  class="positive ui button"
+                >
+                  More Info
+                </a>
+              </div>
+              <div class="ui tab cont" data-tab="map" id="tab2">
+                <iframe
+                  width="510"
+                  height="390"
+                  frameborder="0"
+                  style="border:0"
+                  src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJz15KmqXR1IkRPALcKeV_Fd4&key=AIzaSyDG_d4YtrLXpsGYlJCBzpkhlb0IDNcsO40"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $(".ui.dropdown").dropdown();
+      });
+      $(document).ready(function() {
+        $(".cont").hide();
+        $("#tab1").show();
+        $(".pg:first-child").addClass("active");
+
+        $(".pg").click(function(event) {
+          event.preventDefault();
+          $(".pg").removeClass("active");
+          $(".cont").hide();
+          $(this).addClass("active");
+          $("#" + $(this).attr("rel")).show();
+        });
+      });
+    </script>
+  </body>
+</html>

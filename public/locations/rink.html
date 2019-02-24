@@ -37,32 +37,24 @@
             <th>Population</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td data-label="Name">Victor's ice rink</td>
-            <td data-label="Condition">Sparse</td>
-            <td data-label="Population">10</td>
-          </tr>
-          <tr>
-            <td data-label="Name">Max's ice rink</td>
-            <td data-label="Condition">Packed</td>
-            <td data-label="Population">30</td>
-          </tr>
-          <tr>
-            <td data-label="Name">Maxine's ice rink</td>
-            <td data-label="Condition">Full</td>
-            <td data-label="Population">100</td>
-          </tr>
-          <tr>
-            <td data-label="Name">Zack's ice rink</td>
-            <td data-label="Condition">Empty</td>
-            <td data-label="Population">0</td>
-          </tr>
-        </tbody>
+        <tbody id="displayStudy"></tbody>
       </table>
       <div class="ui divider"></div>
       <span>&copy; LaVision 2019</span>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDhHOVv0cuU7TvydMsoRvvOtv9tDTaS1zk",
+        authDomain: "lavision.firebaseapp.com",
+        databaseURL: "https://lavision.firebaseio.com",
+        projectId: "lavision",
+        storageBucket: "lavision.appspot.com",
+        messagingSenderId: "271188764440"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -73,6 +65,84 @@
       $(function() {
         $(".ui.dropdown").dropdown();
       });
+    </script>
+    <script type="text/javascript">
+      function status(x) {
+        if (x >= 20) {
+          return "Packed!";
+        } else if (x >= 5 && x < 20) {
+          return "Good";
+        } else if (x < 5 && x >= 1) {
+          return "Sparse";
+        } else {
+          return "Empty!";
+        }
+      }
+      function displayStudy() {
+        var studyRef = firebase
+          .database()
+          .ref("rinks")
+          .on("value", function(snapshot) {
+            snapshotToArray(snapshot);
+          });
+      }
+
+      function snapshotToArray(snapshot) {
+        var returnArr = [];
+
+        snapshot.forEach(function(childSnapshot) {
+          var item = childSnapshot.val();
+          item.key = childSnapshot.key;
+
+          returnArr.push(item);
+        });
+
+        updateTableHTML(returnArr);
+      }
+
+      function updateTableHTML(myArray) {
+        var first = true;
+        var tableBody = document.getElementById("displayStudy");
+
+        // Reset the table
+        tableBody.innerHTML = "";
+
+        // Build the new table
+        for (var i = 0; i < myArray.length; i++) {
+          var tr = document.createElement("tr");
+          var td1 = document.createElement("td");
+          var td2 = document.createElement("td");
+          var td3 = document.createElement("td");
+          if (first) {
+            var a = document.createElement("a");
+            td2.innerHTML = status(myArray[i].numPeople);
+            td3.innerHTML = myArray[i].numPeople;
+            a.setAttribute("href", "./rinks/albertcampbell.html");
+            a.innerHTML = myArray[i].key;
+            td1.setAttribute("data-label", "Name");
+            td2.setAttribute("data-label", "Condition");
+            td3.setAttribute("data-label", "Population");
+            td1.appendChild(a);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tableBody.appendChild(tr);
+            first = false;
+          } else {
+            td1.innerHTML = myArray[i].key;
+            td2.innerHTML = status(myArray[i].numPeople);
+            td3.innerHTML = myArray[i].numPeople;
+            td1.setAttribute("data-label", "Name");
+            td2.setAttribute("data-label", "Condition");
+            td3.setAttribute("data-label", "Population");
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tableBody.appendChild(tr);
+          }
+        }
+      }
+      displayStudy();
     </script>
   </body>
 </html>
