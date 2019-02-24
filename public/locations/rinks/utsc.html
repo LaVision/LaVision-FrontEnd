@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../../assets/pictures/LaVision.png" />
+    <title>LaVision</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="ui secondary pointing menu">
+      <a class="header item" href="/"> LaVision </a>
+      <div class="ui pointing dropdown link item">
+        <span class="text">Locations</span> <i class="dropdown icon"></i>
+        <div class="menu">
+          <a href="../study.html" class="item" style="color: black;">
+            Study Spaces
+          </a>
+          <a href="../rink.html" class="item" style="color: black;">
+            Ice Rinks
+          </a>
+          <a href="../park.html" class="item" style="color: black;">
+            Public Parks
+          </a>
+        </div>
+      </div>
+      <a class="item" href="../about.html"> About Us </a>
+    </div>
+    <div class="ui container">
+      <div class="ui grid">
+        <div class="eight wide column">
+          <img id="curr" class="ui fluid big image" />
+        </div>
+        <div class="eight wide column">
+          <div class="column">
+            <div class="ui segment">
+              <div class="ui menu top">
+                <a class="item pg" data-tab="details" rel="tab1">Details</a>
+                <a class="item pg" data-tab="map" rel="tab2">Map</a>
+              </div>
+              <div class="ui tab cont" id="tab1" data-tab="details">
+                <h1 class="ui huge header" style="margin-top: 20px">
+                  UTSC Ice Rink
+                  <div class="sub header">
+                    1265 Military Trail, Scarborough, ON M1C 1A4, Canada
+                  </div>
+                </h1>
+                <h3>Estimated No. of People: <span id="number"></span></h3>
+                <p style="padding: 20px 0">For Demo Purposes only</p>
+                <a href="#" class="positive ui button disabled"> More Info </a>
+              </div>
+              <div class="ui tab cont" data-tab="map" id="tab2">
+                <iframe
+                  width="510"
+                  height="390"
+                  frameborder="0"
+                  style="border:0"
+                  src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJf9Wrt2_a1IkRrHuIaQFuZbs&key=AIzaSyDG_d4YtrLXpsGYlJCBzpkhlb0IDNcsO40"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDhHOVv0cuU7TvydMsoRvvOtv9tDTaS1zk",
+        authDomain: "lavision.firebaseapp.com",
+        databaseURL: "https://lavision.firebaseio.com",
+        projectId: "lavision",
+        storageBucket: "lavision.appspot.com",
+        messagingSenderId: "271188764440"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script type="text/javascript">
+      var storage = firebase.storage();
+      var storageRef = storage.ref("current.jpg");
+      // Image download
+      storageRef
+        .getDownloadURL()
+        .then(function(url) {
+          // `url` is the download URL for 'images/stars.jpg'
+
+          // This can be downloaded directly:
+          var xhr = new XMLHttpRequest();
+          xhr.responseType = "blob";
+          xhr.onload = function(event) {
+            var blob = xhr.response;
+          };
+          xhr.open("GET", url);
+          xhr.send();
+
+          // Or inserted into an <img> element:
+          var img = document.getElementById("curr");
+          img.src = url;
+        })
+        .catch(function(error) {
+          // Handle any errors
+        });
+
+      //get all rinks
+      function getRinks() {
+        firebase
+          .database()
+          .ref("rinks")
+          .on("value", function(snapshot) {
+            var rinks = snapshotToArray(snapshot);
+            $("#number").text("" + rinks[0].numPeople);
+          });
+      }
+      $(function() {
+        $(".ui.dropdown").dropdown();
+      });
+      $(document).ready(function() {
+        $(".cont").hide();
+        $("#tab1").show();
+        $(".pg:first-child").addClass("active");
+
+        $(".pg").click(function(event) {
+          event.preventDefault();
+          $(".pg").removeClass("active");
+          $(".cont").hide();
+          $(this).addClass("active");
+          $("#" + $(this).attr("rel")).show();
+        });
+      });
+      function snapshotToArray(snapshot) {
+        var returnArr = [];
+
+        snapshot.forEach(function(childSnapshot) {
+          var item = childSnapshot.val();
+          item.key = childSnapshot.key;
+
+          returnArr.push(item);
+        });
+
+        return returnArr;
+      }
+      getRinks();
+    </script>
+  </body>
+</html>

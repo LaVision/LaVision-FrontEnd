@@ -138,6 +138,13 @@
             tr.appendChild(td1);
             tr.appendChild(td2);
             tr.appendChild(td3);
+            if (myArray[i].key == "UTSC Ice Rink") {
+              td1.innerHTML = "";
+              var a = document.createElement("a");
+              a.innerHTML = "UTSC Ice Rink";
+              a.setAttribute("href", "./rinks/utsc.html");
+              td1.appendChild(a);
+            }
             tableBody.appendChild(tr);
           }
         }
